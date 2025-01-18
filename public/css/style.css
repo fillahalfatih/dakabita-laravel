@@ -1,0 +1,89 @@
+:root {
+    --bs-body-font-family: 'Poppins', sans-serif;
+    --bs-primary: #ff9934 !important;
+    --bs-primary-hover: #ffac58 !important;
+}
+
+.text-dark {
+    color: #333333 !important;
+}
+
+.badge {
+    background-color: var(--bs-primary);
+}
+
+.btn,
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn:hover,
+.btn-primary:hover {
+    background-color: var(--bs-primary-hover);
+    border-color: var(--bs-primary-hover);
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.category-badge {
+    position: absolute;
+}
+
+.category__links a {
+    font-size: 14px;
+    color: #454545 !important;
+    padding-bottom: 2px;
+    margin: 0px 4px;
+    cursor: pointer;
+    transition: all 0.1s ease 0s !important;
+}
+
+.category__links a:hover,
+.category__links .activated {
+    color: var(--bs-primary) !important;
+    border-bottom: 1px solid var(--bs-primary);
+}
+
+.card a img {
+    transition: all 0.1s ease 0s;
+}
+
+.card a img:hover {
+    /* transform: scale(1.075); */
+    transform: scale(1.05);
+    border-radius: 8px;
+    /* border: 2px solid var(--bs-primary); */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.045), 0 6px 24px 0 rgba(41, 41, 41, 0.025);
+}
+
+.card-body a h6:hover {
+    text-decoration: underline;
+}
+
+.form-signin .form-floating:focus-within,
+.form-registration .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[id="email"],
+.form-registration input[id="name"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-registration input[id="email"],
+.form-registration input[id="username"] {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+.form-signin input[id="password"],
+.form-registration input[id="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
