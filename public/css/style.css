@@ -24,7 +24,7 @@
     border-color: var(--bs-primary-hover);
 }
 
-.dropdown-toggle::after {
+.un-auth-toggle .dropdown-toggle::after {
     display: none !important;
 }
 
