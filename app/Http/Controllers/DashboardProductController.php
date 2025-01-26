@@ -12,9 +12,13 @@ class DashboardProductController extends Controller
      */
     public function index()
     {
+        // mengembalikan data post yang dimiliki oleh user yang sedang login
+        // return Post::where('user_id', auth()->user()->id)->get();
+
         return view('dashboard.products.index', [
             'title' => 'Product',
-            'products' => Product::all()
+            'products' => Product::orderBy('category_id')->get()
+            // 'products' => Product::where('category_id', 1)->get()
         ]);
     }
 
@@ -39,7 +43,11 @@ class DashboardProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // return $product;
+        return view('dashboard.products.show', [
+            'title' => 'Product Detail',
+            'product' => $product
+        ]);
     }
 
     /**
