@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardProductController;
 
 Route::get('/', function () {
     return view('homepage', [
@@ -27,4 +27,10 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 // ->middleware('auth') artinya hanya bisa diakses oleh user yang sudah login
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function() {
+    return view('dashboard.index', [
+        'title' => 'Dashboard'
+    ]);
+})->middleware('auth');
+
+Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
