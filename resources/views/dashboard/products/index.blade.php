@@ -6,13 +6,15 @@
 </div>
 
 <div class="table-responsive">
+
+    <a href="/dashboard/product/create" class="btn btn-primary mb-3">Create new product</a>
+
     <table class="table table-striped table-sm">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Gambar</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Netto</th>
                 <th scope="col">Kategori</th>
                 <th scope="col">Harga</th>
                 <th scope="col">Action</th>
@@ -24,7 +26,6 @@
                 <td>{{ $loop->iteration }}</td>
                 <td><img src="{{ asset('kue-kacang.png') }}" width="150px" alt=""></td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->netto }}gr</td>
                 <td>{{ $product->category->name }}</td>
                 <td>{{ $product->price }}.000</td>
                 <td>

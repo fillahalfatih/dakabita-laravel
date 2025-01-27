@@ -33,4 +33,6 @@ Route::get('/dashboard', function() {
     ]);
 })->middleware('auth');
 
+Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('auth');
+
 Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');

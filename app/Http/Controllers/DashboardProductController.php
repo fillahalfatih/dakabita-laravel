@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class DashboardProductController extends Controller
@@ -27,7 +29,11 @@ class DashboardProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.products.create', [
+            'title' => 'Create Product',
+            'product' => new Product(),
+            'categories' => Category::All()
+        ]);
     }
 
     /**
@@ -35,7 +41,7 @@ class DashboardProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -72,5 +78,11 @@ class DashboardProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }
