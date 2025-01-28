@@ -87,3 +87,9 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--bs-primary);
+    color: white;
+}
