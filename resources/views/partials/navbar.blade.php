@@ -78,7 +78,7 @@
                         Produk
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item py-2 px-lg-4" href="/product">🍞 All Product</a></li>
+                        <li><a class="dropdown-item py-2 px-lg-4" href="/product">🍞 Semua Produk</a></li>
                         <li><hr class="dropdown-divider"></li>
                         @foreach ($categories as $category)
                             <li><a class="dropdown-item py-2 px-lg-4" href="/product?category={{ $category->slug }}">{{ $category->emoji }} {{ $category->name }}</a></li>
