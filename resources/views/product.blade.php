@@ -13,7 +13,7 @@
             @endif --}}
 
             <div class="input-group mx-auto">
-                <input type="text" class="form-control p-3" placeholder="Cari produk" name="search" value="{{ request('search') }}">
+                <input type="text" class="form-control p-3" placeholder="Cari produk" name="search" value="{{ request('search') }}" required>
                 <button class="btn btn-secondary px-3" type="submit"><i class="bi bi-search"></i></button>
             </div>
         </form>
