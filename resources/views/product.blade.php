@@ -18,20 +18,6 @@
             </div>
         </form>
 
-        <div class="d-none">
-            <select class="form-select py-3" id="category" name="category_id" aria-label="Default select example">
-                <!-- Pilihan default -->
-                <option value="/product" {{ is_null($currentCategory) ? 'selected' : '' }}>🍞 Semua Produk</option>
-
-                <!-- Daftar kategori -->
-                @foreach ($categories as $category)
-                    <option value="/product?category={{ $category->slug }}" {{ $currentCategory && $currentCategory->id == $category->id ? 'selected' : '' }}>
-                        {{ $category->emoji }} {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
         <ul class="d-lg-block d-flex justify-content-center m-0 list-group un-auth-toggle">
             <li class="nav-item dropdown list-group-item" style="padding: 13px 16px !important;">
                 <a class="nav-link dropdown-toggle fw-medium fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="style=white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -67,28 +53,7 @@
         </ul>
     </div>
 
-    <form class="container d-none" action="/product">
-        {{-- cari berdasarkan kategori --}}
-        {{-- @if (request('category'))
-            <input type="hidden" name="category" value="{{ request('category') }}">
-        @endif --}}
-
-        <div class="input-group mb-3 mx-auto" style="max-width: 500px !important; ">
-            <input type="text" class="form-control p-3" placeholder="Cari produk" name="search" value="{{ request('search') }}" style="font-size: 14px !important">
-            <button class="btn btn-secondary px-3" type="submit"><i class="bi bi-search"></i></button>
-        </div>
-    </form>
-
-    <p class="category__links text-center d-none" style="font-size: 14px !important; margin-bottom: 4rem">
-        <a class="mx-2 mx-md-3 text-decoration-none text-dark fw-medium {{ $title == 'Semua Produk — Dakabita' ? 'activated' : '' }}" href="/product">All</a> •
-        @foreach ($categories as $category)
-            <a class="mx-2 mx-md-3 text-decoration-none text-dark fw-medium {{ $title == $category->name . ' — Dakabita' ? 'activated' : '' }}" href="/product?category={{ $category->slug }}">{{ $category->name }}</a>
-            @if (!$loop->last)
-                •
-            @endif
-        @endforeach
-    </p>
-
+    @if ($products->count())
     <div class="container">
         <div class="row">
             @foreach ($products as $product)
@@ -110,6 +75,10 @@
             @endforeach
         </div>
     </div>
+    @else
+    <img src="{{ asset('not-found.png') }}" alt="" class="text-center d-block mx-auto" style="width: 450px; margin-top: 4rem">
+    <p class="text-center fs-6">No product found</p>
+    @endif
 
     <div class="d-flex justify-content-center align-items-center mt-4 pt-4">
         {{ $products->links() }}
