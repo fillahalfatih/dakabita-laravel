@@ -23,7 +23,6 @@
                 <!-- Pilihan default -->
                 <option value="/product" {{ is_null($currentCategory) ? 'selected' : '' }}>🍞 Semua Produk</option>
 
-
                 <!-- Daftar kategori -->
                 @foreach ($categories as $category)
                     <option value="/product?category={{ $category->slug }}" {{ $currentCategory && $currentCategory->id == $category->id ? 'selected' : '' }}>
@@ -112,7 +111,7 @@
         </div>
     </div>
 
-    {{-- <div class="d-flex justify-content-center align-items-center mt-4 pt-4">
+    <div class="d-flex justify-content-center align-items-center mt-4 pt-4">
         {{ $products->links() }}
-    </div> --}}
+    </div>
 @endsection

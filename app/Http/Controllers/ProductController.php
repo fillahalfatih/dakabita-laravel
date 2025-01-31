@@ -19,7 +19,7 @@ class ProductController extends Controller
         return view('product', [
             // condition ? value_if_true : value_if_false;
             "title" => $category ? $category->name . " — Dakabita" : "Semua Produk" . " — Dakabita",
-            "products" => Product::with('category')->latest()->filter(request(['search', 'category']))->paginate(50)->withQueryString(),
+            "products" => Product::with('category')->latest()->filter(request(['search', 'category']))->paginate(12)->withQueryString(),
             "categories" => Category::all(),
             "currentCategory" => $category,
         ]);
