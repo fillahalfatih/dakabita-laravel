@@ -14,6 +14,8 @@ class Product extends Model
     // mengaktifkan eager loading
     protected $with = ['category'];
 
+    protected $guarded = ['id'];
+
     public function scopeFilter($query, array $filters) {
         // if (isset($filters['search']) ? $filters['search'] : false) {
         //     return $query->where('title', 'like', '%' . $filters['search'] . '%')

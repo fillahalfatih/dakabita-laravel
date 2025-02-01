@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Tests\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardProductController extends Controller
 {
@@ -41,7 +43,23 @@ class DashboardProductController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validatedData = $request->validate([
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:products',
+            'price' => 'required|numeric|max:1000000',
+            'description' => 'required|max:255',
+            'composition' => 'required|max:255',
+            'netto' => 'required|numeric|max:1000',
+            'category_id' => 'required'
+        ]);
+
+        $validatedData['user_id'] = Auth::user()->id;
+
+        Product::create($validatedData);
+
+        return redirect('/dashboard/product')->with('success', 'Product has been added');
     }
 
     /**

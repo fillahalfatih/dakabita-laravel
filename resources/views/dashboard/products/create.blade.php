@@ -30,7 +30,11 @@
             <label for="category" class="form-label">Category</label>
             <select class="form-select" id="category" name="category_id">
                 @foreach ($categories as $category)
+                @if(old('category_id') == $category->id)
+                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                @else
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endif
                 @endforeach
             </select>
         </div>
@@ -44,8 +48,29 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="composition" class="form-label">Composition</label>
+            <input type="text" class="form-control @error('composition') is-invalid @enderror" id="composition" name="composition" value="{{ old('composition') }}" required>
+            @error('composition')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="netto" class="form-label">Netto</label>
+            <input type="number" class="form-control @error('netto') is-invalid @enderror" id="netto" name="netto" value="{{ old('netto') }}" required>
+            @error('netto')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="description" class="form-label">Product Description</label>
-            <input id="description" type="hidden" name="description">
+            @error('description')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+            <input id="description" type="hidden" name="description" value="{{ old('description') }}">
             <trix-editor input="description"></trix-editor>
         </div>
         {{-- <div class="mb-3">
@@ -57,7 +82,7 @@
             </div>
             @enderror
         </div> --}}
-        <button type="submit" class="btn btn-primary">Add Product</button>
+        <button type="submit" class="btn btn-primary mb-5">Add Product</button>
     </form>
 
     <script>

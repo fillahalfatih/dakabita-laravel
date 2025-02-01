@@ -76,8 +76,8 @@
         </div>
     </div>
     @else
-    <img src="{{ asset('not-found.png') }}" alt="" class="text-center d-block mx-auto" style="width: 450px; margin-top: 4rem">
-    <p class="text-center fs-6">No product found</p>
+    <img src="{{ asset('not-found.png') }}" alt="" class="text-center d-block mx-auto" style="width: 450px; margin-top: -100px !important">
+    <p class="text-center fs-6" style="margin-top: -50px !important">No product found</p>
     @endif
 
     <div class="d-flex justify-content-center align-items-center mt-4 pt-4">

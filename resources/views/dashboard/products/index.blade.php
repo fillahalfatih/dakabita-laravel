@@ -9,6 +9,12 @@
 
     <a href="/dashboard/product/create" class="btn btn-primary mb-3">Create new product</a>
 
+    @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <table class="table table-striped table-sm">
         <thead>
             <tr>
@@ -27,7 +33,7 @@
                 <td><img src="{{ asset('kue-kacang.png') }}" width="150px" alt=""></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->category->name }}</td>
-                <td>{{ $product->price }}.000</td>
+                <td>{{ $product->price }}</td>
                 <td>
                     <a href="/dashboard/product/{{ $product->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
 
