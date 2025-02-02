@@ -30,7 +30,13 @@
             @foreach ($products as $product)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td><img src="{{ asset('kue-kacang.png') }}" width="150px" alt=""></td>
+                <td>
+                    @if ($product->image)
+                    <img src="{{ asset('storage/'. $product->image) }}" width="150px" alt="">
+                    @else
+                    <img src="{{ asset('kue-kacang.png') }}" width="150px" alt="">
+                    @endif
+                </td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->category->name }}</td>
                 <td>{{ $product->price }}</td>

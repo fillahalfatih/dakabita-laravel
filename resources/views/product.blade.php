@@ -60,7 +60,11 @@
             <div class="col-lg-3 col-md-4 col-6 mb-3">
                 <div class="card">
                     <a href="/product/{{ $product->slug }}">
+                        @if ($product->image)
+                        <img src="{{ asset('storage/'. $product->image) }}" class="card-img-top" alt="...">
+                        @else
                         <img src="{{ asset('kue-kacang.png') }}" class="card-img-top" alt="...">
+                        @endif
                     </a>
                     <div class="card-body">
                         <span class="badge mb-2 fw-medium">{{ $product->category->name }}</span>

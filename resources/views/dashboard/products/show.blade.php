@@ -14,6 +14,20 @@
 
 <div class="container pt-lg-4 pb-4 pb-md-0 mt-4 d-md-flex justify-content-between gap-4">
     <div class="col-md-6">
+        @if ($product->image)
+        <img class="rounded-3" style="width: 100%" src="{{ asset('storage/'. $product->image) }}" alt="">
+        <div class="row justify-content-between mt-4">
+            <div class="col-md-4" style="max-width: 33.33%;">
+                <img class="rounded-3" style="width: 100%" src="{{ asset('storage/'. $product->image) }}" alt="">
+            </div>
+            <div class="col-md-4" style="max-width: 33.33%;">
+                <img class="rounded-3" style="width: 100%" src="{{ asset('storage/'. $product->image) }}" alt="">
+            </div>
+            <div class="col-md-4" style="max-width: 33.33%;">
+                <img class="rounded-3" style="width: 100%" src="{{ asset('storage/'. $product->image) }}" alt="">
+            </div>
+        </div>
+        @else
         <img class="rounded-3" style="width: 100%" src="{{ asset('kue-kacang.png') }}" alt="">
         <div class="row justify-content-between mt-4">
             <div class="col-md-4" style="max-width: 33.33%;">
@@ -26,6 +40,7 @@
                 <img class="rounded-3" style="width: 100%" src="{{ asset('kue-kacang.png') }}" alt="">
             </div>
         </div>
+        @endif
     </div>
 
     <div class="col-md-6 mt-4 mt-md-0">

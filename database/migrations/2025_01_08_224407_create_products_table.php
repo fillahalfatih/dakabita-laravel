@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->string('slug')->unique();
-            $table->string('image')->nullable()->default('kue-kacang.png');
+            $table->string('image')->nullable();
             $table->string('name');
             $table->text('description');
             $table->integer('price');
