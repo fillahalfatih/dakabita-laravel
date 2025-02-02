@@ -79,7 +79,12 @@ class DashboardProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        // menampilkan halaman edit
+        return view('dashboard.products.edit', [
+            'title' => 'Edit Product',
+            'product' => $product,
+            'categories' => Category::All()
+        ]);
     }
 
     /**
@@ -87,7 +92,31 @@ class DashboardProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // proses edit
+
+        $rules = [
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|max:255',
+            'price' => 'required|numeric|max:1000000',
+            'description' => 'required|max:255',
+            'composition' => 'required|max:255',
+            'netto' => 'required|numeric|max:1000',
+            'category_id' => 'required'
+        ];
+
+        if($request->slug != $product->slug) {
+            $rules['slug'] = 'required|unique:products';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        // $validatedData['user_id'] = Auth::user()->id;
+
+        Product::where('id', $product->id)
+                ->update($validatedData);
+
+        return redirect('/dashboard/product')->with('success', 'Product ' . $product->name . ' has been updated');
     }
 
     /**

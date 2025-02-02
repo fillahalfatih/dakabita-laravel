@@ -4,7 +4,7 @@
 
 <div class="container my-4">
     <a href="/dashboard/product" class="btn btn-success"><span data-feather="arrow-left"></span>Back to product</a>
-    <a href="" class="btn btn-warning"><span data-feather="edit"></span>Edit</a>
+    <a href="/dashboard/product/{{ $product->slug }}/edit" class="btn btn-warning"><span data-feather="edit"></span>Edit</a>
     <form action="/dashboard/product/{{ $product->slug }}" method="post" class="d-inline">
         @method('delete')
         @csrf
