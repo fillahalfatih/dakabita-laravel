@@ -32,9 +32,9 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     @if ($product->image)
-                    <img src="{{ asset('storage/'. $product->image) }}" width="150px" alt="">
+                    <img src="{{ asset('storage/'. $product->image) }}" width="150px" alt="{{ $product->name }}">
                     @else
-                    <img src="{{ asset('kue-kacang.png') }}" width="150px" alt="">
+                    <img src="{{ asset('kue-kacang.png') }}" width="150px" alt="{{ $product->name }}">
                     @endif
                 </td>
                 <td>{{ $product->name }}</td>

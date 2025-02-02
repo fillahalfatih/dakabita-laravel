@@ -61,9 +61,9 @@
                 <div class="card">
                     <a href="/product/{{ $product->slug }}">
                         @if ($product->image)
-                        <img src="{{ asset('storage/'. $product->image) }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/'. $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                         @else
-                        <img src="{{ asset('kue-kacang.png') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('kue-kacang.png') }}" class="card-img-top" alt="{{ $product->name }}">
                         @endif
                     </a>
                     <div class="card-body">
