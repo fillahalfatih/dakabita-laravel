@@ -36,6 +36,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Bakery'
         ]);
 
+        User::create([
+            'name' => 'Barry Allen',
+            'username' => 'barryallen',
+            'email' => 'barryallen@gmail.com',
+            'password' => bcrypt('asdfghjkl')
+        ]);
+
         Product::factory(25)->create();
     }
 }
