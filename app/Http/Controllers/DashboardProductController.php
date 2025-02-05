@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Tests\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardProductController extends Controller
 {
@@ -57,6 +58,7 @@ class DashboardProductController extends Controller
         ]);
 
         if($request->file('image')) {
+            // jika ada file image yang diupload, masukkan ke dalam folder product-images
             $validatedData['image'] = $request->file('image')->store('product-images');
         }
 
@@ -100,8 +102,7 @@ class DashboardProductController extends Controller
         // proses edit
 
         $rules = [
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'name' => 'required|max:255',
             'price' => 'required|numeric|max:1000000',
             'description' => 'required|max:255',
@@ -116,6 +117,15 @@ class DashboardProductController extends Controller
 
         $validatedData = $request->validate($rules);
 
+        if($request->file('image')) {
+            if($request->oldImage) {
+                // jika ada file image yang diupload, hapus file image lama
+                Storage::delete($request->oldImage);
+            }
+            // jika ada file image yang diupload, masukkan ke dalam folder product-images
+            $validatedData['image'] = $request->file('image')->store('product-images');
+        }
+
         // $validatedData['user_id'] = Auth::user()->id;
 
         Product::where('id', $product->id)
@@ -129,6 +139,10 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if($product->image) {
+            Storage::delete($product->image);
+        }
+
         Product::destroy($product->id);
 
         return redirect('/dashboard/product')->with('success', 'Product has been deleted');
