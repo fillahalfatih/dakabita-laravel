@@ -71,7 +71,7 @@
                         <a class="text-decoration-none text-dark" href="/product/{{ $product->slug }}">
                             <h6 class="card-title fw-semibold mt-1">{{ $product->name }}</h6>
                         </a>
-                        <h6 class="text-danger fw-bold m-0">Rp {{ $product->price }}.000</h6>
+                        <h6 class="text-danger fw-bold m-0">Rp {{ $product->price }}</h6>
                         {{-- <a href="#" class="btn btn-primary">Rp {{ $product->price }}</a> --}}
                     </div>
                 </div>
