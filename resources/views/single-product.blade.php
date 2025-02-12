@@ -58,7 +58,7 @@
 <div class="fixed-bottom border-top bg-white py-3">
     <div class="container" style="max-width: 1200px !important">
         <div class="d-flex container justify-content-between align-items-center">
-            <h4 class="m-0">Rp {{ $product->price }}.000</h4>
+            <h4 class="m-0">Rp{{ number_format($product->price, 0, ',', '.') }}</h4>
             <button class="btn btn-primary">Pesan</button>
         </div>
     </div>
