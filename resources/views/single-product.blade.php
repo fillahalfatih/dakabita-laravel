@@ -33,9 +33,9 @@
     </div>
 
     <div class="col-md-6 mt-4 mt-md-0">
-        <h4 class="fw-bold text-dark">{{ $product->name }} • by <span class="text-danger">Dakabita</span></h4>
-        <p>Kue Kacang Jadul Premium — 100% menggunakan margarin (No nabati oil). Kue Kacang Jadul Premium</p>
-        <span class="badge">{{ $product->category->name }}</span>
+        <span class="badge mb-3">{{ $product->category->name }}</span>
+        <h4 class="fw-bold text-dark">{{ $product->name }} • <span class="text-danger">Dakabita</span></h4>
+        <p class="lh-lg">{!! $product->description !!}</p>
         <table class="table table-bordered rounded-3">
             <tbody>
                 <tr>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td scope="row">Komposisi</td>
-                    <td>Tepung, Margarin, Telur, Gula, Garam, Vanili, Kacang Tanah, Kacang Cacah</td>
+                    <td>{{ $product->composition }}</td>
                 </tr>
             </tbody>
         </table>
