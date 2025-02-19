@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Models\Category;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,5 @@ Route::get('/dashboard', function() {
 Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('auth');
 
 Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
+
+Route::resource('/dashboard/category', AdminCategoryController::class)->except('show')->middleware('auth');

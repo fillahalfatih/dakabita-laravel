@@ -20,17 +20,25 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/customer') ? 'active' : ''}}" href="#">
-                    <span data-feather="users"></span>
-                    Customers
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/report') ? 'active' : ''}}" href="#">
                     <span data-feather="bar-chart-2"></span>
                     Reports
                 </a>
             </li>
         </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Administrator</span>
+        </h6>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : ''}}" href="/dashboard/category">
+                    <span data-feather="grid"></span>
+                    Categories
+                </a>
+            </li>
+        </ul>
+
     </div>
 </nav>
