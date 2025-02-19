@@ -38,4 +38,4 @@ Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, '
 
 Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
 
-Route::resource('/dashboard/category', AdminCategoryController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/category', AdminCategoryController::class)->except('show');
