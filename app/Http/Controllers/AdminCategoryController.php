@@ -13,10 +13,6 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        if(Auth::guest() || Auth::user()->username !== 'barryallen') {
-            abort(403);
-        }
-
         return view('dashboard.categories.index', [
             'title' => 'Category',
             'categories' => Category::all()

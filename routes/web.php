@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminCategoryController;
 use App\Models\Category;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardProductController;
 
 Route::get('/', function () {
@@ -38,4 +39,6 @@ Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, '
 
 Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
 
-Route::resource('/dashboard/category', AdminCategoryController::class)->except('show');
+Route::middleware([IsAdmin::class])->group(function () {
+    Route::resource('/dashboard/category', AdminCategoryController::class)->except('show');
+});
