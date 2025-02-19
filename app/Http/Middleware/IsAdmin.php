@@ -20,7 +20,7 @@ class IsAdmin
         // guest -> kebalikan dari check
         // abort -> memberhentikan proses dan menampilkan error code
 
-        if(!Auth::check() || Auth::user()->username !== 'barryallen') {
+        if(!Auth::check() || !Auth::user()->is_admin) {
             abort(403);
         }
 
