@@ -106,3 +106,12 @@
 .page-link:hover {
     color: var(--bs-primary);
 }
+
+.nav-item.active {
+    background-color: var(--bs-primary);
+    border-radius: 8px;
+}
+
+.nav-item.active .nav-link {
+    color: white !important;
+}

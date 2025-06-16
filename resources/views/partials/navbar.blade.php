@@ -73,7 +73,7 @@
                     <a class="nav-link fw-medium" aria-current="page" href="#">Tentang</a>
                 </li>
                 <li><hr class="divider"></li>
-                <li class="nav-item dropdown un-auth-toggle">
+                <li class="nav-item dropdown un-auth-toggle {{ ($active === 'Produk') ? 'active' : '' }}">
                     <a class="nav-link dropdown-toggle fw-medium" href="/product" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Produk
                     </a>

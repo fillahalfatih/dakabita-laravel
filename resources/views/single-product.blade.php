@@ -58,8 +58,8 @@
 <div class="fixed-bottom border-top bg-white py-3">
     <div class="container" style="max-width: 1200px !important">
         <div class="d-flex container justify-content-between align-items-center">
-            <h4 class="m-0">Rp{{ number_format($product->price, 0, ',', '.') }}</h4>
-            <button class="btn btn-primary">Pesan</button>
+            <h4 class="m-0" style="font-weight: 700; color: #333333;">Rp{{ number_format($product->price, 0, ',', '.') }}</h4>
+            <button class="btn btn-primary fw-medium"><i class="bi bi-cart me-2"></i>Pesan</button>
         </div>
     </div>
 </div>

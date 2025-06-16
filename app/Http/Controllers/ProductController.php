@@ -20,15 +20,17 @@ class ProductController extends Controller
             // condition ? value_if_true : value_if_false;
             "title" => $category ? $category->name . " — Dakabita" : "Semua Produk" . " — Dakabita",
             "products" => Product::with('category')->latest()->filter(request(['search', 'category']))->paginate(12)->withQueryString(),
+            "active" => "Produk",
             "categories" => Category::all(),
             "currentCategory" => $category,
         ]);
     }
-
+    
     public function singleProduct(Product $product) {
         return view('single-product', [
             "title" => $product->name . " — Dakabita",
             "product" => $product,
+            "active" => "Produk",
             "categories" => Category::all()
         ]);
     }
