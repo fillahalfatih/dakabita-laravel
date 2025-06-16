@@ -12,7 +12,8 @@ use App\Http\Controllers\DashboardProductController;
 
 Route::get('/', function () {
     return view('homepage', [
-        'title' => 'Dakabita — Butter Cookies and Bakery',
+        "title" => 'Dakabita — Butter Cookies and Bakery',
+        "active" => 'home',
         "categories" => Category::all()
     ]);
 });
@@ -25,8 +26,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+// Route::post('/register', [RegisterController::class, 'store']);
 
 // ->middleware('auth') artinya hanya bisa diakses oleh user yang sudah login
 Route::get('/dashboard', function() {
